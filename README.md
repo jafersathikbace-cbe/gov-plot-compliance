@@ -1,78 +1,156 @@
 # Government Plot Compliance Management System
 
-A Laravel-based workflow application for tracking government plot allotments, policy milestones, evidence submissions, incentive claims, legal actions, audit events, and compliance reporting.
+A Laravel-based workflow application for managing government plot allotments, policy milestones, evidence submissions, incentive claims, legal actions, audit events, and compliance reporting.
 
-## Core workflow
+**Live Demo:** https://gov-plot-compliance.getvoroa.com/login
+
+## Application Preview
+
+### Compliance Case Dashboard
+
+![Gov Plot Compliance dashboard](gov-plot-compliance-dashboard.png)
+
+The case dashboard brings together plot details, policy requirements, officer/allottee assignments, compliance milestones, evidence submissions, and incentive claims.
+
+### Case Closure Check
+
+![Gov Plot Compliance closure check](gov-plot-compliance-closure-check.png)
+
+The application supports workflow actions such as case closure checks and provides visible completion feedback to authorized users.
+
+## Overview
+
+Government Plot Compliance is designed as a role-based compliance workflow application for tracking government plot allotment cases from assignment through milestone monitoring, evidence review, incentive claims, legal actions, and final compliance reporting.
+
+The system organizes policy requirements into structured milestones and provides role-protected workflows for administrators, officers, and allottees.
+
+## Core Workflow
+
+The application supports the following workflow:
 
 1. Configure policy templates and milestone rules.
-2. Create and assign allotment cases to responsible officers.
-3. Generate case timelines from policy milestones.
-4. Collect evidence submissions and route them for review.
-5. Track milestone progress and case compliance status.
-6. Process incentive claims with role-based approvals.
-7. Record legal notices, extensions, reviews, and terminations.
-8. Produce monthly, non-compliance, and case-certificate reports.
-9. Maintain an audit trail for material case actions.
+2. Create and assign plot allotment cases.
+3. Assign responsible officers and allottees.
+4. Generate case timelines from policy milestones.
+5. Track investment, employment, and other compliance requirements.
+6. Collect evidence submissions for review.
+7. Monitor milestone progress and compliance status.
+8. Process incentive claims through role-based approvals.
+9. Record legal notices, extensions, reviews, and terminations.
+10. Run case closure checks.
+11. Generate compliance certificates and reports.
+12. Maintain an audit trail for material case actions.
 
-## Technology
+## Key Capabilities
 
-- PHP 8.2+
-- Laravel 12
-- MongoDB via `mongodb/laravel-mongodb`
-- Spatie Laravel Permission for roles
-- Blade, Tailwind CSS, Alpine.js, Vite
-- Dompdf for generated PDF documents
-- PHPUnit for automated tests
+### Plot & Case Management
 
-## Roles
+- Government plot allotment case tracking
+- Policy-linked compliance requirements
+- Case status management
+- Construction and compliance deadlines
+- Investment and employment targets
+- Subsidy and incentive information
+- Officer and allottee assignments
 
-The application uses role-based route protection for super administrators, state administrators, district officers, inspection officers, and allottees. Authorization is enforced at route-group boundaries and should be reviewed alongside the business rules before production deployment.
+### Policy & Milestones
 
-## Local setup
+- Configurable policy templates
+- Milestone-based compliance tracking
+- Investment completion milestones
+- Employment generation targets
+- Due-date monitoring
+- Current-versus-target progress tracking
+- Compliance status evaluation
 
-1. Install PHP 8.2+, Composer, Node.js, npm, and MongoDB.
-2. Copy `.env.example` to `.env`.
-3. Configure `MONGODB_URI` and `MONGODB_DATABASE`.
-4. Install dependencies:
+### Evidence & Review
 
-```bash
-composer install
-npm install
-```
+- Evidence submission workflows
+- Submission review queues
+- Role-protected review actions
+- Case-level compliance evidence tracking
 
-5. Generate an application key:
+### Incentive Claims
 
-```bash
-php artisan key:generate
-```
+- Incentive claim creation
+- Role-based approval workflows
+- Claim status tracking
+- Case-linked incentive processing
 
-6. Run the application:
+### Legal Actions
 
-```bash
-php artisan serve
-npm run dev
-```
+- Legal notice records
+- Extension tracking
+- Legal reviews
+- Termination records
+- Case-level legal status
 
-For a production build:
+### Reporting
 
-```bash
-npm run build
-```
+The application supports generation of compliance-related documents and reports, including:
 
-## Testing
+- Monthly reports
+- Non-compliance reports
+- Case certificates
+- Compliance certificates
 
-Run the Laravel test suite with:
+### Audit Trail
 
-```bash
-php artisan test
-```
+Material case actions are recorded through an audit trail to support accountability and operational review.
 
-The repository also includes focused unit coverage for reusable compliance-status logic and model-key handling.
+## Roles & Authorization
 
-## Security and privacy
+The application uses role-based route protection for:
 
-Do not commit `.env`, credentials, tokens, generated application keys, production database files, or user-submitted evidence. The sample environment file contains placeholders only. Production deployments should use secret management, HTTPS, restricted database access, backups, and appropriate retention policies.
+- **Super Administrators**
+- **State Administrators**
+- **District Officers**
+- **Inspection Officers**
+- **Allottees**
 
-## Project scope
+Authorization is enforced at route-group boundaries and should be reviewed together with the application's business rules before production deployment.
 
-This repository demonstrates an application architecture for compliance workflow management. It is not a substitute for legal advice, government policy, statutory interpretation, or an official records system. Policy rules and eligibility criteria must be configured and reviewed by the responsible organization.
+## Technology Stack
+
+| Layer | Technology |
+|---|---|
+| Backend | PHP 8.2+ |
+| Framework | Laravel 12 |
+| Database | MongoDB |
+| MongoDB Integration | `mongodb/laravel-mongodb` |
+| Authorization | Spatie Laravel Permission |
+| Frontend | Blade |
+| Styling | Tailwind CSS |
+| JavaScript | Alpine.js |
+| Build Tool | Vite |
+| PDF Generation | Dompdf |
+| Testing | PHPUnit |
+
+## Application Architecture
+
+The application follows a Laravel-based server-rendered architecture:
+
+```text
+Browser
+   │
+   ▼
+Laravel Routes
+   │
+   ├── Authentication & Authorization
+   │
+   ├── Case Management
+   │
+   ├── Policy & Milestone Workflows
+   │
+   ├── Evidence & Review
+   │
+   ├── Incentive Claims
+   │
+   ├── Legal Actions
+   │
+   ├── Reporting & PDF Generation
+   │
+   └── Audit Events
+   │
+   ▼
+MongoDB
