@@ -1,0 +1,12 @@
+.git
+.github
+node_modules
+vendor
+.env
+.env.*
+!.env.example
+storage/logs/*
+public/build
+composer.lock
+npm-debug.log*
+.DS_Store
